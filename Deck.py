@@ -2,6 +2,7 @@ from const import PRINTED, SUITS, RANKS
 from random import shuffle
 from itertools import product
 
+#Описание класса карт с атрибутами: масть, ранг, изображение, очки
 class Card():
     def __init__(self, suit, rank, picture, points):
         self.suit = suit
@@ -15,12 +16,11 @@ class Card():
 
 
 class Deck():
-
     def __init__(self):
         self.cards = self._generete_deck()
         shuffle(self.cards)
 
-
+#Генерация каждой карты, присваевание очков, масти, отображения, добавление  список
     def _generete_deck(self):
         cards = []
         for suit, rank in product(SUITS, RANKS):
@@ -35,8 +35,10 @@ class Deck():
             cards.append(c)
         return cards
 
+#Возвращение карты из колоды и её удаление
     def get_card(self):
         return self.cards.pop()
 
+#Вызов значения длинны массива
     def __len__(self):
         return len(self.cards)

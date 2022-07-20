@@ -6,7 +6,11 @@ if __name__ == '__main__':
     g.start_game()
 
     for pl in g.players:
-        print(pl)
+        pl.print_cards()
+        print('***********')
+
+    print(g.player_pos)
+    print(g.players)
 
     #d = Deck()
 
