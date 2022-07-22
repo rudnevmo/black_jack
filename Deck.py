@@ -2,7 +2,7 @@ from const import PRINTED, SUITS, RANKS
 from random import shuffle
 from itertools import product
 
-#Описание класса карт с атрибутами: масть, ранг, изображение, очки
+# Описание класса карт с атрибутами: масть, ранг, изображение, очки
 class Card():
     def __init__(self, suit, rank, picture, points):
         self.suit = suit
@@ -11,20 +11,22 @@ class Card():
         self.points = points
 
     def __str__(self):
-        message = self.picture + '\nPoints: ' + str(self.points)
+        message = self.picture + '\nПоінів: ' + str(self.points)
         return message
 
 
-class Deck():
+class Deck:
     def __init__(self):
         self.cards = self._generete_deck()
         shuffle(self.cards)
 
-#Генерация каждой карты, присваевание очков, масти, отображения, добавление  список
+# Генерация каждой карты, присваевание очков, масти, отображения, добавление  список
     def _generete_deck(self):
         cards = []
         for suit, rank in product(SUITS, RANKS):
-            if rank == 'ace':
+            if rank == 'ace' and 'ace' in cards:
+                points = 1
+            elif rank == 'ace' and 'ace' not in cards:
                 points = 11
             elif rank.isdigit():
                 points = int(rank)
